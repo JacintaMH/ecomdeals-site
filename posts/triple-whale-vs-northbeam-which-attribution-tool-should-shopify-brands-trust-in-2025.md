@@ -6,6 +6,7 @@ description: Spending on ads without knowing what's actually working is
   expensive guesswork. We compare Triple Whale and Northbeam so you can pick the
   right attribution tool for your store.
 category: Analytics
+heroImage: /images/triple-whale-vs-northbeam-.jpg
 ---
 If you're running paid ads on Meta, TikTok, or Google and relying solely on platform-reported ROAS, you're making decisions based on numbers that are almost certainly wrong. Every platform takes credit for every sale it can — and they all overclaim.
 
