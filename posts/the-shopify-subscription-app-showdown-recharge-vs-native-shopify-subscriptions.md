@@ -20,29 +20,29 @@ This matters because checkout friction kills conversions. Any extra step or visu
 
 ## ReCharge: What It Still Does Well
 
-ReCharge has a decade of product development behind it and it shows. Its **customer portal** is polished and highly customisable — subscribers can swap products, pause, skip, or change delivery frequency without contacting support. For brands with complex subscription logic, that self-service layer reduces churn meaningfully.
+ReCharge has a decade of product development behind it and it shows. Its customer portal is polished and highly customisable — subscribers can swap products, pause, skip, or change delivery frequency without contacting support. For brands with complex subscription logic, that self-service layer reduces churn meaningfully.
 
-It also supports more advanced **subscription models**: build-a-box, prepaid subscriptions, bundles, and tiered pricing. If your product requires anything beyond a simple recurring order, ReCharge's flexibility is hard to match.
+It also supports more advanced subscription models: build-a-box, prepaid subscriptions, bundles, and tiered pricing. If your product requires anything beyond a simple recurring order, ReCharge's flexibility is hard to match.
 
 > **Worth noting:** ReCharge recently moved to a usage-based pricing model. At scale, the fees add up — factor this into your unit economics before committing.
 
 ## Native Shopify Subscriptions: The Case For Keeping It Simple
 
-Shopify's native subscription tools — and the apps built cleanly on top of the Subscriptions API, like **Seal Subscriptions** or **Skio** — offer a tighter, faster setup with full checkout integration. No third-party portal, no separate login for customers, and lower fees at most revenue levels.
+Shopify's native subscription tools — and the apps built cleanly on top of the Subscriptions API, like **Seal** Subscriptions or Skio — offer a tighter, faster setup with full checkout integration. No third-party portal, no separate login for customers, and lower fees at most revenue levels.
 
 For brands selling a straightforward repeat-purchase product — supplements, coffee, pet food, skincare — native subscriptions handle everything you actually need. The checkout experience is seamless and the operational overhead is lower.
 
-According to [Shopify's subscription commerce data](https://www.shopify.com/blog/subscription-ecommerce), subscription businesses see up to 35% higher customer lifetime value than transactional-only stores — but only when the subscriber experience is smooth enough to reduce involuntary churn.
+According to Shopify's subscription commerce data, subscription businesses see up to 35% higher customer lifetime value than transactional-only stores — but only when the subscriber experience is smooth enough to reduce involuntary churn.
 
 ## Pricing Comparison
 
-| | ReCharge | Native / API-based Apps |
-|---|---|---|
-| Monthly fee | From $99/month | Free–$49/month (most apps) |
-| Transaction fee | 1–2% on Standard | 1% or less on most |
-| Checkout | Redirect (older) / Native (newer) | Fully native |
-| Customer portal | Advanced, highly customisable | Good, simpler |
-| Complex logic | Strong | Limited |
+|                 | ReCharge                          | Native / API-based Apps    |
+| --------------- | --------------------------------- | -------------------------- |
+| Monthly fee     | From $99/month                    | Free–$49/month (most apps) |
+| Transaction fee | 1–2% on Standard                  | 1% or less on most         |
+| Checkout        | Redirect (older) / Native (newer) | Fully native               |
+| Customer portal | Advanced, highly customisable     | Good, simpler              |
+| Complex logic   | Strong                            | Limited                    |
 
 ReCharge's Standard plan charges a transaction fee on top of Shopify's own fees. At £30k+/month in subscription revenue, that adds up fast — run the numbers for your specific volume before deciding.
 
@@ -50,7 +50,7 @@ ReCharge's Standard plan charges a transaction fee on top of Shopify's own fees.
 
 If you're already on ReCharge with an established subscriber base, migration carries real risk. Subscribers have to re-enter payment details unless a seamless migration is handled correctly — and any friction at that point causes cancellations.
 
-[Recharge's own migration documentation](https://support.rechargepayments.com) outlines the process, but brands switching to native tools should budget time for testing and expect some subscriber drop-off. If you're starting fresh, this isn't a concern — but it's worth knowing before you plan a switch mid-growth.
+Recharge's own migration documentation outlines the process, but brands switching to native tools should budget time for testing and expect some subscriber drop-off. If you're starting fresh, this isn't a concern — but it's worth knowing before you plan a switch mid-growth.
 
 ## Which One Is Right For Your Store
 
@@ -64,8 +64,8 @@ Established brands running complex subscription models — bundles, build-a-box,
 
 > Start native unless your subscription model is genuinely complex — ReCharge earns its cost at scale, not at launch.
 
-- **Choose a native API app if** you're launching subscriptions for the first time, selling a simple repeat-purchase product, or want the lowest-friction checkout experience
-- **Choose ReCharge if** you need build-a-box, prepaid subscriptions, or advanced portal customisation that simpler tools can't support
-- **Audit your fees first if** you're already on ReCharge — at high subscription volumes the transaction costs may justify a migration conversation
+* **Choose a native API app if** you're launching subscriptions for the first time, selling a simple repeat-purchase product, or want the lowest-friction checkout experience
+* **Choose ReCharge if** you need build-a-box, prepaid subscriptions, or advanced portal customisation that simpler tools can't support
+* **Audit your fees first if** you're already on ReCharge — at high subscription volumes the transaction costs may justify a migration conversation
 
 Before you commit, check our [deals page](https://ecomdeals.co.uk/) — we have exclusive discount codes that could save you on your first few months.
