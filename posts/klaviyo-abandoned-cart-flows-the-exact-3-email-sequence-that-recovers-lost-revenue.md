@@ -6,6 +6,7 @@ description: Most stores lose 70% of carts without ever following up. Here's the
   exact 3-email Klaviyo sequence that brings those customers back and recovers
   real revenue.
 category: Email & SMS
+heroImage: /images/untitled-design.jpg
 ---
 Roughly 70% of online shoppers add something to their cart and leave without buying. For most stores, that's not a traffic problem or a product problem — it's a follow-up problem. And it's entirely fixable.
 Klaviyo's abandoned cart flow is one of the highest-ROI automations you can set up. But most stores either don't have one running, or they're sending a single generic reminder and leaving money on the table. This guide gives you the exact three-email sequence to fix that.
