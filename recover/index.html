@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcomDeals — Account Setup</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #080C0A;
+    color: #F2F5F0;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+    padding: 2rem;
+  }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 2px; }
+  .logo span { color: #3DFF8F; }
+  p { color: #7A9080; font-size: 15px; font-weight: 300; }
+  .spinner {
+    width: 28px; height: 28px;
+    border: 2px solid #1E2E21;
+    border-top-color: #3DFF8F;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="logo">Ecom<span>Deals</span></div>
+<div class="spinner"></div>
+<p id="msg">Setting up your account...</p>
+<script>
+  window.netlifyIdentity.on('init', function(user) {
+    window.netlifyIdentity.open();
+  });
+  window.netlifyIdentity.on('login', function() {
+    document.getElementById('msg').textContent = "You're in! Redirecting...";
+    setTimeout(function() { window.location.href = '/admin/'; }, 1000);
+  });
+  window.netlifyIdentity.on('error', function(err) {
+    document.getElementById('msg').textContent = 'Error: ' + err;
+  });
+</script>
+</body>
+</html>

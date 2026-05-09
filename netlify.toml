@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Root URL serves the deals page
+[[redirects]]
+  from = "/"
+  to = "/deals.html"
+  status = 200
+
+# Admin panel
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+# Identity email links all land here
+[[redirects]]
+  from = "/recover"
+  to = "/recover/index.html"
+  status = 200
