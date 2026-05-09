@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+site_url: https://ecomdeals.co.uk
+display_url: https://ecomdeals.co.uk
+
+collections:
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text", hint: "Short summary shown on blog listing and in Google search results" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Platform Guide", "Roundup", "Beginner Guide", "Conversion", "Email & SMS", "Analytics", "Case Study"]
+      - { label: "Hero Image", name: "heroImage", widget: "image", required: false, hint: "Recommended 1440x810px. Dark treatment applied automatically." }
+      - { label: "Hero Image Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the image for SEO e.g. 'woman working on laptop'" }
+      - { label: "Body", name: "body", widget: "markdown" }
