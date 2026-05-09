@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} — EcomDeals</title>
+<meta name="description" content="{{ description }}">
+<meta property="og:title" content="{{ title }} — EcomDeals">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ecomdeals.co.uk/blog/{{ title | slugify }}/">
+<link rel="canonical" href="https://ecomdeals.co.uk/blog/{{ title | slugify }}/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"></noscript>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080C0A;
+    --bg2: #0E1610;
+    --bg3: #141F17;
+    --card: #111811;
+    --card-border: #1E2E21;
+    --accent: #3DFF8F;
+    --accent-dim: #1A7A42;
+    --accent-muted: #0E3D22;
+    --text: #F2F5F0;
+    --text-muted: #7A9080;
+    --text-dim: #4A5E50;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,12,10,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    background: var(--bg2);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 3px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 16px;
+    border-radius: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.18s;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--accent-muted);
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+  }
+
+  /* ARTICLE */
+  .article-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .article-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--accent-muted);
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+  }
+
+  .article-date, .article-readtime {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .meta-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    display: inline-block;
+  }
+
+  h1.article-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 6vw, 58px);
+    line-height: 0.97;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
+
+  .article-desc {
+    font-size: 18px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  /* Article body typography */
+  .article-body h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin: 2.5rem 0 1rem;
+  }
+
+  .article-body h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .article-body p {
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .article-body strong { color: var(--text); font-weight: 500; }
+
+  .article-body a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-dim);
+    transition: opacity 0.15s;
+  }
+
+  .article-body a:hover { opacity: 0.75; }
+
+  .article-body ul, .article-body ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .article-body li { margin-bottom: 0.5rem; }
+
+  .article-body blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .article-body hr {
+    border: none;
+    border-top: 1px solid var(--card-border);
+    margin: 2.5rem 0;
+  }
+
+  .article-body img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    border: 1px solid var(--card-border);
+  }
+
+  /* TABLES */
+  .article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 14px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+  }
+
+  .article-body thead tr {
+    background: var(--accent-muted);
+    border-bottom: 1px solid var(--accent-dim);
+  }
+
+  .article-body thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .article-body tbody tr {
+    border-bottom: 1px solid var(--card-border);
+    transition: background 0.15s;
+  }
+
+  .article-body tbody tr:last-child { border-bottom: none; }
+  .article-body tbody tr:nth-child(even) { background: var(--bg2); }
+  .article-body tbody tr:hover { background: var(--bg3); }
+
+  .article-body td {
+    padding: 12px 16px;
+    color: var(--text-muted);
+    font-weight: 300;
+    vertical-align: top;
+  }
+
+  .article-body td:first-child {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* CALLOUT BOXES - use > blockquote for verdict/tip/warning */
+  .article-body blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--bg3);
+    border-radius: 0 8px 8px 0;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  .article-body blockquote p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .article-body blockquote strong {
+    display: block;
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-style: normal;
+  }
+
+  /* KEY TAKEAWAY BOX - wrap content in a div with class */
+  .verdict-box {
+    background: var(--bg3);
+    border: 1px solid var(--accent-dim);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .verdict-box-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .verdict-box ul {
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  .verdict-box li {
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+  }
+
+  .verdict-box li strong { color: var(--text); }
+
+  /* INLINE CODE */
+  .article-body code {
+    background: var(--bg2);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 13px;
+    color: var(--accent);
+  }
+
+  /* CTA BANNER */
+  .article-cta {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--bg3);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .article-cta-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+
+  .article-cta-text p {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .article-cta-btn {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    padding: 11px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.18s;
+  }
+
+  .article-cta-btn:hover { background: #5EFFAA; }
+
+  /* BACK LINK */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: color 0.15s;
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  footer {
+    border-top: 1px solid var(--card-border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+
+  footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1.25rem; }
+    .article-wrap { padding: 2rem 1.25rem 4rem; }
+    .article-cta { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Ecom<span>Deals</span></a>
+  <div class="nav-links">
+    <a href="/">Deals</a>
+    <a href="/blog/" class="active">Blog</a>
+  </div>
+</nav>
+
+<article class="article-wrap">
+
+  <a href="/blog/" class="back-link">← Back to Blog</a>
+
+  <div class="article-meta">
+    <span class="article-tag">{{ category }}</span>
+    <span class="article-date">{{ date | dateDisplay }}</span>
+    <span class="meta-dot"></span>
+    <span class="article-readtime">{{ content | readingTime }}</span>
+  </div>
+
+  <h1 class="article-title">{{ title }}</h1>
+  <p class="article-desc">{{ description }}</p>
+
+  <div class="article-body">
+    {{ content | safe }}
+  </div>
+
+  <div class="article-cta">
+    <div class="article-cta-text">
+      <h3>Find Exclusive Deals on These Tools</h3>
+      <p>Browse our curated affiliate codes for the best ecommerce platforms.</p>
+    </div>
+    <a href="/" class="article-cta-btn">Browse All Deals →</a>
+  </div>
+
+</article>
+
+<footer>
+  <p><strong>EcomDeals</strong> — <a href="mailto:hello@ecomdeals.co.uk">hello@ecomdeals.co.uk</a></p>
+</footer>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
