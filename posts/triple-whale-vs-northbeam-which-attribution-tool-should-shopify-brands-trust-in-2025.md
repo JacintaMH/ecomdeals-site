@@ -30,10 +30,10 @@ Northbeam leans more heavily on **multi-touch modelling** and algorithmic attrib
 
 ## Pricing
 
-| Tool | Starting Price | Best For |
-|---|---|---|
-| Triple Whale | From ~$129/month | DTC Shopify brands, founders, small teams |
-| Northbeam | From ~$250/month | Scaling brands, performance marketing teams |
+| Tool         | Starting Price   | Best For                                    |
+| ------------ | ---------------- | ------------------------------------------- |
+| Triple Whale | From ~$129/month | DTC Shopify brands, founders, small teams   |
+| Northbeam    | From ~$250/month | Scaling brands, performance marketing teams |
 
 Triple Whale's pricing scales with your store's revenue. Northbeam's pricing is less transparent and typically negotiated — expect higher entry costs. Both offer trials, so it's worth testing before committing.
 
@@ -49,7 +49,7 @@ Triple Whale has invested heavily in **creative reporting** — you can see whic
 
 Northbeam's creative reporting is more limited. Its strength is channel-level and campaign-level attribution, not creative performance. If creative testing is central to your strategy, Triple Whale has the edge here.
 
-According to [Shopify's commerce trends data](https://www.shopify.com/research/future-of-commerce), first-party data strategies are now essential for scaling brands as third-party tracking continues to erode — both tools are built around this reality, but Triple Whale makes it more actionable for smaller teams.
+According to Shopify's commerce trends data, first-party data strategies are now essential for scaling brands as third-party tracking continues to erode — both tools are built around this reality, but Triple Whale makes it more actionable for smaller teams.
 
 ## Which Brands Should Use Each
 
@@ -61,9 +61,9 @@ A useful rule of thumb: if you're spending under £50k/month on ads and don't ha
 
 > Triple Whale for most Shopify brands; Northbeam for scaling teams with the budget and resource to use it properly.
 
-- **Choose Triple Whale if** you're a founder or small team running Meta and TikTok ads and want fast, clean daily reporting without a data analyst
-- **Choose Triple Whale if** creative performance visibility matters to your decision-making
-- **Choose Northbeam if** you're spending £50k+ per month across multiple channels and have a performance marketing team to configure and act on the data
-- **Choose Northbeam if** you need granular multi-touch modelling and are willing to invest time in setup
+* **Choose Triple Whale if** you're a founder or small team running Meta and TikTok ads and want fast, clean daily reporting without a data analyst
+* **Choose Triple Whale if** creative performance visibility matters to your decision-making
+* **Choose Northbeam if** you're spending £50k+ per month across multiple channels and have a performance marketing team to configure and act on the data
+* **Choose Northbeam if** you need granular multi-touch modelling and are willing to invest time in setup
 
 Before you commit, check our [deals page](https://ecomdeals.co.uk/) — we have exclusive discount codes that could save you on your first few months.
