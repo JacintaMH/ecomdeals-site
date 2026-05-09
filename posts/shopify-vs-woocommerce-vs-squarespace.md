@@ -1,8 +1,11 @@
 ---
 title: Shopify vs WooCommerce vs Squarespace - Which is Right for Your Business?
 date: 2025-05-09
-description: Choosing the wrong platform can cost you months of lost revenue and painful migrations. We break down the real differences — pricing, flexibility, ease of use, and who each platform is actually built for.
+description: Choosing the wrong platform can cost you months of lost revenue and
+  painful migrations. We break down the real differences — pricing, flexibility,
+  ease of use, and who each platform is actually built for.
 category: Platform Guide
+heroImage: /images/untitled-design-1-.jpg
 ---
 
 If you're starting an online store in 2025, you'll quickly find three names come up over and over — Shopify, WooCommerce, and Squarespace. They're all capable platforms, but they're built for very different types of businesses.
