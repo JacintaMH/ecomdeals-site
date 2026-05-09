@@ -1,0 +1,45 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Root URL serves the deals page
+[[redirects]]
+  from = "/"
+  to = "/deals.html"
+  status = 200
+
+# Admin panel
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+# Identity email links
+[[redirects]]
+  from = "/recover"
+  to = "/recover/index.html"
+  status = 200
+
+# Policy pages
+[[redirects]]
+  from = "/affiliate-disclosure/"
+  to = "/affiliate-disclosure/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy/"
+  to = "/privacy-policy/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms/"
+  to = "/terms/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/cookie-policy/"
+  to = "/cookie-policy/index.html"
+  status = 200
