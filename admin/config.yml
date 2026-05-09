@@ -5,6 +5,9 @@ backend:
 media_folder: "public/images"
 public_folder: "/images"
 
+site_url: https://ecomdeals.co.uk
+display_url: https://ecomdeals.co.uk
+
 collections:
   - name: "posts"
     label: "Blog Posts"
@@ -19,5 +22,4 @@ collections:
         name: "category"
         widget: "select"
         options: ["Platform Guide", "Roundup", "Beginner Guide", "Conversion", "Email & SMS", "Analytics", "Case Study"]
-      - { label: "Featured Image Alt Text", name: "imageAlt", widget: "string", required: false }
       - { label: "Body", name: "body", widget: "markdown" }

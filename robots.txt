@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /recover/
+
+Sitemap: https://ecomdeals.co.uk/sitemap.xml
