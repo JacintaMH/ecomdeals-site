@@ -5,6 +5,7 @@ description: Most stores collect reviews and do nothing with them. Here's how to
   use Yotpo to put social proof to work across every stage of your customer
   journey and increase conversions.
 category: Tools & Apps
+heroImage: /images/untitled-design.jpg
 ---
 Most online stores treat reviews as a box to tick. They set up a basic request email, collect a handful of stars, and display them quietly on product pages. Then they wonder why conversion rates aren't moving.
 
