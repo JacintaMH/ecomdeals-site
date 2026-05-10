@@ -6,7 +6,7 @@ description: Most stores lose 70% of carts without ever following up. Here's the
   exact 3-email Klaviyo sequence that brings those customers back and recovers
   real revenue.
 category: Email & SMS
-heroImage: /images/untitled-design.jpg
+heroImage: /images/triple-whale-vs-northbeam-.jpg
 ---
 Roughly 70% of online shoppers add something to their cart and leave without buying. For most stores, that's not a traffic problem or a product problem — it's a follow-up problem. And it's entirely fixable.
 
