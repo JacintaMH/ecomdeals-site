@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecommerce Profit Margin Calculator — EcomDeals</title>
+<meta name="description" content="Free ecommerce profit margin calculator. Enter your selling price, COGS, shipping and ad spend to instantly see your gross margin, net margin and monthly profit projections.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root {
+  --black:#0a0a0a;
+  --white:#ffffff;
+  --green:#4ade80;
+  --green-dark:#16a34a;
+  --green-light:#f0fdf4;
+  --amber:#f59e0b;
+  --amber-light:#fffbeb;
+  --red:#ef4444;
+  --red-light:#fef2f2;
+  --gray-50:#f9fafb;
+  --gray-100:#f3f4f6;
+  --gray-200:#e5e7eb;
+  --gray-400:#9ca3af;
+  --gray-500:#6b7280;
+  --gray-700:#374151;
+  --gray-900:#111827;
+}
+
+body {
+  font-family:'DM Sans',system-ui,sans-serif;
+  color:var(--gray-900);
+  background:#f5f5f5;
+  line-height:1.6;
+}
+
+nav {
+  background:var(--black);
+  padding:0 40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
+  height:52px;
+}
+
+.logo {
+  font-family:'Syne',sans-serif;
+  font-weight:700;
+  font-size:16px;
+  text-decoration:none;
+  letter-spacing:0.5px;
+  flex-shrink:0;
+  text-transform:uppercase;
+}
+
+.logo .ecom  { color:#ffffff; }
+.logo .deals { color:#4ade80; }
+
+.nav-links {display:flex;gap:0;align-items:center;height:100%;}
+
+.nav-links a {
+  color:#666;
+  font-size:14px;
+  text-decoration:none;
+  transition:color 0.15s;
+  padding:0 14px;
+  height:100%;
+  display:flex;
+  align-items:center;
+}
+
+.nav-links a:hover {color:white;}
+.nav-links a.active {color:white;box-shadow:inset 0 -2px 0 white;}
+
+/* Dropdown */
+.nav-dropdown {
+  position:relative;
+  height:100%;
+  display:flex;
+  align-items:center;
+}
+
+.nav-dropdown > .drop-trigger {
+  color:#666;
+  font-size:14px;
+  text-decoration:none;
+  padding:0 14px;
+  height:100%;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  cursor:pointer;
+  transition:color 0.15s;
+  user-select:none;
+}
+
+.nav-dropdown > .drop-trigger:hover,
+.nav-dropdown:hover > .drop-trigger {color:white;}
+
+.nav-dropdown > .drop-trigger.active {color:white;box-shadow:inset 0 -2px 0 white;}
+
+.drop-arrow {
+  font-size:10px;
+  transition:transform 0.2s;
+  opacity:0.5;
+}
+
+.nav-dropdown:hover .drop-arrow {transform:rotate(180deg);}
+
+.drop-menu {
+  position:absolute;
+  top:calc(100% + 1px);
+  left:0;
+  background:#141414;
+  border:1px solid #252525;
+  border-radius:10px;
+  padding:6px;
+  min-width:220px;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-6px);
+  transition:opacity 0.15s, transform 0.15s;
+  box-shadow:0 8px 24px rgba(0,0,0,0.4);
+}
+
+.nav-dropdown:hover .drop-menu {
+  opacity:1;
+  pointer-events:all;
+  transform:translateY(0);
+}
+
+.drop-item {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:6px;
+  text-decoration:none;
+  transition:background 0.12s;
+  cursor:pointer;
+}
+
+.drop-item:hover {background:#1f1f1f;}
+
+.drop-item-icon {
+  width:30px;
+  height:30px;
+  border-radius:6px;
+  background:#222;
+  border:1px solid #2a2a2a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  font-size:14px;
+  color:#4ade80;
+}
+
+.drop-item-text .drop-item-label {
+  font-size:13px;
+  color:#ddd;
+  font-weight:500;
+  line-height:1.3;
+}
+
+.drop-item-text .drop-item-desc {
+  font-size:12px;
+  color:#555;
+  margin-top:1px;
+}
+
+.drop-divider {
+  height:1px;
+  background:#1e1e1e;
+  margin:4px 6px;
+}
+
+.drop-coming {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  opacity:0.4;
+  cursor:default;
+}
+
+.drop-coming-icon {
+  width:30px;
+  height:30px;
+  border-radius:6px;
+  background:#1a1a1a;
+  border:1px solid #222;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  font-size:14px;
+  color:#555;
+}
+
+.drop-coming-text {font-size:13px;color:#555;}
+
+.drop-coming .drop-pill {
+  margin-left:auto;
+  font-size:10px;
+  background:#1f1f1f;
+  border:1px solid #2a2a2a;
+  color:#555;
+  padding:2px 7px;
+  border-radius:10px;
+}
+
+/* Burger */
+.burger {
+  display:none;
+  flex-direction:column;
+  gap:4px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+  margin-right:-6px;
+}
+
+.burger span {
+  display:block;
+  width:20px;
+  height:1.5px;
+  background:#666;
+  border-radius:1px;
+  transition:transform 0.2s, opacity 0.2s, background 0.15s;
+}
+
+.burger:hover span {background:white;}
+.burger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+
+/* Mobile nav panel */
+.mobile-nav {
+  display:none;
+  background:#0d0d0d;
+  border-top:1px solid #1a1a1a;
+  padding:8px 16px 16px;
+  position:sticky;
+  top:52px;
+  z-index:99;
+}
+
+.mobile-nav.open {display:block;}
+
+.mobile-nav a, .mobile-nav .mob-section {
+  display:block;
+  padding:10px 12px;
+  color:#666;
+  font-size:14px;
+  text-decoration:none;
+  border-radius:8px;
+  transition:background 0.12s, color 0.12s;
+}
+
+.mobile-nav a:hover {background:#1a1a1a;color:white;}
+.mobile-nav a.active {color:white;}
+
+.mob-section-label {
+  font-size:11px;
+  color:#333;
+  text-transform:uppercase;
+  letter-spacing:0.8px;
+  padding:12px 12px 4px;
+  font-weight:600;
+}
+
+.mobile-nav .mob-tool-link {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 12px;
+  color:#666;
+  text-decoration:none;
+  border-radius:8px;
+  transition:background 0.12s, color 0.12s;
+  font-size:14px;
+}
+
+.mobile-nav .mob-tool-link:hover {background:#1a1a1a;color:white;}
+.mobile-nav .mob-tool-link.active {color:#4ade80;}
+
+.mob-tool-dot {
+  width:6px;height:6px;border-radius:50%;
+  background:#4ade80;flex-shrink:0;
+}
+
+.mob-tool-dot.dim {background:#2a2a2a;}
+
+@media(max-width:700px){
+  nav {padding:0 20px;}
+  .nav-links,.nav-dropdown {display:none;}
+  .burger {display:flex;}
+}
+
+.hero {
+  background:var(--black);
+  padding:52px 40px 60px;
+}
+
+.hero-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:#161616;
+  border:1px solid #252525;
+  border-radius:20px;
+  padding:4px 14px;
+  margin-bottom:18px;
+}
+
+.hero-badge span {font-size:12px;color:#777;letter-spacing:0.2px;}
+
+.hero h1 {
+  font-family:'Syne',sans-serif;
+  font-size:40px;
+  font-weight:700;
+  color:white;
+  line-height:1.1;
+  letter-spacing:-0.8px;
+  margin-bottom:14px;
+}
+
+.hero h1 em {color:var(--green);font-style:italic;}
+
+.hero p {
+  color:#777;
+  font-size:15px;
+  max-width:520px;
+  line-height:1.75;
+}
+
+.stats-bar {
+  background:#f8f8f8;
+  border-bottom:1px solid var(--gray-200);
+  padding:11px 40px;
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+
+.stat {
+  display:flex;
+  align-items:center;
+  font-size:13px;
+  color:var(--gray-500);
+  padding:0 20px;
+  border-right:1px solid var(--gray-200);
+}
+
+.stat:first-child {padding-left:0;}
+.stat:last-child  {border-right:none;}
+
+.stat strong {
+  color:var(--gray-900);
+  font-weight:500;
+  margin-right:5px;
+}
+
+.main {
+  max-width:920px;
+  margin:0 auto;
+  padding:40px 20px 64px;
+}
+
+.breadcrumb {
+  font-size:13px;
+  color:var(--gray-400);
+  margin-bottom:28px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.breadcrumb a {color:var(--gray-400);text-decoration:none;}
+.breadcrumb a:hover {color:var(--gray-700);}
+.breadcrumb span {color:var(--gray-300);}
+
+.calc-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:16px;
+}
+
+.panel {
+  background:white;
+  border:1px solid var(--gray-200);
+  border-radius:16px;
+  padding:24px;
+}
+
+.panel-title {
+  font-family:'Syne',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  color:var(--gray-400);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:22px;
+}
+
+.field {margin-bottom:14px;}
+.field:last-child {margin-bottom:0;}
+
+.field label {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13px;
+  color:var(--gray-500);
+  margin-bottom:6px;
+  font-weight:500;
+}
+
+.field label .hint {
+  font-size:11px;
+  color:var(--gray-400);
+  font-weight:400;
+}
+
+.input-wrap {
+  display:flex;
+  align-items:center;
+  border:1px solid var(--gray-200);
+  border-radius:8px;
+  overflow:hidden;
+  transition:border-color 0.15s, box-shadow 0.15s;
+}
+
+.input-wrap:focus-within {
+  border-color:#aaa;
+  box-shadow:0 0 0 3px rgba(0,0,0,0.04);
+}
+
+.input-prefix,.input-suffix {
+  padding:10px 12px;
+  background:var(--gray-50);
+  color:var(--gray-400);
+  font-size:14px;
+  flex-shrink:0;
+  user-select:none;
+}
+
+.input-prefix {border-right:1px solid var(--gray-200);}
+.input-suffix {border-left:1px solid var(--gray-200);}
+
+.input-wrap input[type=number] {
+  flex:1;
+  border:none;
+  outline:none;
+  padding:10px 12px;
+  font-size:15px;
+  font-family:'DM Sans',sans-serif;
+  color:var(--gray-900);
+  background:white;
+  width:100%;
+  -moz-appearance:textfield;
+}
+
+.input-wrap input[type=number]::-webkit-inner-spin-button,
+.input-wrap input[type=number]::-webkit-outer-spin-button {-webkit-appearance:none;}
+
+.margin-bar-track {
+  height:6px;
+  background:var(--gray-100);
+  border-radius:3px;
+  overflow:hidden;
+  margin-bottom:12px;
+}
+
+.margin-bar-fill {
+  height:100%;
+  border-radius:3px;
+  transition:width 0.35s ease, background 0.35s ease;
+  min-width:2px;
+}
+
+.health-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.health-badge {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:500;
+}
+
+.health-badge.good {background:var(--green-light);color:var(--green-dark);}
+.health-badge.ok   {background:var(--amber-light);color:#92400e;}
+.health-badge.bad  {background:var(--red-light);color:#991b1b;}
+
+.result-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:11px 0;
+  border-bottom:1px solid var(--gray-100);
+}
+
+.result-row:last-child {border-bottom:none;}
+.result-row.divider {border-top:1px solid var(--gray-200);margin-top:4px;padding-top:14px;}
+
+.result-label {
+  font-size:13px;
+  color:var(--gray-500);
+}
+
+.result-value {
+  font-family:'Syne',sans-serif;
+  font-size:17px;
+  font-weight:600;
+  color:var(--gray-900);
+}
+
+.result-value.positive {color:var(--green-dark);}
+.result-value.negative {color:var(--red);}
+.result-value.warn     {color:var(--amber);}
+
+.projection-panel {
+  background:white;
+  border:1px solid var(--gray-200);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:16px;
+}
+
+.slider-row {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:4px;
+}
+
+.slider-label {
+  font-size:13px;
+  color:var(--gray-500);
+  white-space:nowrap;
+  min-width:110px;
+  font-weight:500;
+}
+
+.slider-row input[type=range] {
+  flex:1;
+  -webkit-appearance:none;
+  height:4px;
+  background:var(--gray-200);
+  border-radius:2px;
+  outline:none;
+  cursor:pointer;
+}
+
+.slider-row input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--black);
+  cursor:pointer;
+  transition:transform 0.1s;
+}
+
+.slider-row input[type=range]::-webkit-slider-thumb:hover {transform:scale(1.15);}
+
+.slider-val {
+  font-family:'Syne',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  color:var(--gray-900);
+  min-width:80px;
+  text-align:right;
+}
+
+.proj-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.proj-card {
+  background:var(--gray-50);
+  border-radius:10px;
+  padding:14px 16px;
+}
+
+.proj-label {
+  font-size:12px;
+  color:var(--gray-400);
+  margin-bottom:5px;
+}
+
+.proj-value {
+  font-family:'Syne',sans-serif;
+  font-size:22px;
+  font-weight:700;
+  color:var(--gray-900);
+}
+
+.proj-value.profit {color:var(--green-dark);}
+.proj-value.loss   {color:var(--red);}
+
+.tip-panel {
+  background:var(--gray-50);
+  border:1px solid var(--gray-200);
+  border-radius:16px;
+  padding:20px 24px;
+  margin-bottom:16px;
+}
+
+.tip-panel .tip-title {
+  font-family:'Syne',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  color:var(--gray-400);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:12px;
+}
+
+.tip-list {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.tip-item {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13px;
+  color:var(--gray-600);
+  line-height:1.5;
+}
+
+.tip-bullet {
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:white;
+  border:1px solid var(--gray-200);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  margin-top:1px;
+  font-size:10px;
+  color:var(--gray-400);
+  font-weight:600;
+}
+
+.cta-strip {
+  background:var(--black);
+  border-radius:16px;
+  padding:24px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.cta-copy p {
+  font-size:14px;
+  color:#999;
+  line-height:1.65;
+  max-width:460px;
+}
+
+.cta-copy p strong {
+  color:white;
+  font-weight:500;
+}
+
+.cta-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--green);
+  color:var(--black);
+  font-family:'Syne',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  padding:13px 22px;
+  border-radius:10px;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:opacity 0.15s;
+  flex-shrink:0;
+}
+
+.cta-btn:hover {opacity:0.88;}
+
+footer {
+  background:var(--black);
+  padding:40px 40px 32px;
+  text-align:center;
+  border-top:1px solid #1a1a1a;
+}
+
+.footer-disclaimer {
+  font-size:13px;
+  color:#555;
+  margin-bottom:10px;
+  line-height:1.6;
+}
+
+.footer-disclaimer strong {
+  color:#888;
+  font-weight:500;
+}
+
+.footer-questions {
+  font-size:13px;
+  color:#555;
+  margin-bottom:20px;
+}
+
+.footer-questions a {
+  color:#4ade80;
+  text-decoration:none;
+}
+
+.footer-questions a:hover {
+  text-decoration:underline;
+}
+
+.footer-links {
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  flex-wrap:wrap;
+}
+
+.footer-links a {
+  font-size:13px;
+  color:#555;
+  text-decoration:none;
+  transition:color 0.15s;
+}
+
+.footer-links a:hover { color:#888; }
+
+@media(max-width:700px) {
+  nav {padding:0 20px;}
+  .hero {padding:36px 20px 44px;}
+  .hero h1 {font-size:28px;}
+  .stats-bar {padding:11px 20px;flex-wrap:wrap;}
+  .stat {padding:4px 12px;font-size:12px;}
+  .stat:first-child {padding-left:0;}
+  .calc-grid {grid-template-columns:1fr;}
+  .proj-grid {grid-template-columns:repeat(2,1fr);}
+  .cta-strip {flex-direction:column;align-items:flex-start;}
+  footer {padding:32px 20px 24px;}
+  .footer-links {gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://ecomdeals.co.uk" class="logo"><span class="ecom">Ecom</span><span class="deals">Deals</span></a>
+  <div class="nav-links">
+    <a href="https://ecomdeals.co.uk">Deals</a>
+    <a href="https://ecomdeals.co.uk/blog">Blog</a>
+    <div class="nav-dropdown">
+      <span class="drop-trigger active">Tools <span class="drop-arrow">▼</span></span>
+      <div class="drop-menu">
+        <a href="/tools/profit-margin-calculator" class="drop-item">
+          <div class="drop-item-icon">£</div>
+          <div class="drop-item-text">
+            <div class="drop-item-label">Profit margin calculator</div>
+            <div class="drop-item-desc">Gross margin, net margin & projections</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <button class="burger" id="burger" aria-label="Open menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="https://ecomdeals.co.uk">Deals</a>
+  <a href="https://ecomdeals.co.uk/blog">Blog</a>
+  <div class="mob-section-label">Tools</div>
+  <a href="/tools/profit-margin-calculator" class="mob-tool-link active">
+    <div class="mob-tool-dot"></div>Profit margin calculator
+  </a>
+  <a class="mob-tool-link" style="pointer-events:none;opacity:0.35;">
+    <div class="mob-tool-dot dim"></div>ROAS calculator <span style="font-size:11px;margin-left:6px;">Soon</span>
+  </a>
+  <a class="mob-tool-link" style="pointer-events:none;opacity:0.35;">
+    <div class="mob-tool-dot dim"></div>Pricing strategy tool <span style="font-size:11px;margin-left:6px;">Soon</span>
+  </a>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">
+    <span>✦ Free tool — no sign-up needed</span>
+  </div>
+  <h1>Profit margin<br><em>calculator.</em></h1>
+  <p>Enter your selling price, costs, and ad spend below. See your gross margin, net margin, profit per unit, and monthly projections update in real time.</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><strong>Free</strong> to use</div>
+  <div class="stat"><strong>6</strong> inputs covered</div>
+  <div class="stat"><strong>Real-time</strong> results</div>
+  <div class="stat">Monthly &amp; annual projections</div>
+</div>
+
+<div class="main">
+
+  <div class="breadcrumb">
+    <a href="https://ecomdeals.co.uk">Home</a>
+    <span>›</span>
+    <a href="#">Tools</a>
+    <span>›</span>
+    Profit margin calculator
+  </div>
+
+  <div class="calc-grid">
+
+    <div class="panel">
+      <div class="panel-title">Your numbers</div>
+
+      <div class="field">
+        <label>Selling price <span class="hint">What you charge the customer</span></label>
+        <div class="input-wrap">
+          <span class="input-prefix">£</span>
+          <input type="number" id="price" value="49.99" min="0" step="0.01" oninput="calc()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Cost of goods (COGS) <span class="hint">What you pay to source it</span></label>
+        <div class="input-wrap">
+          <span class="input-prefix">£</span>
+          <input type="number" id="cogs" value="12.00" min="0" step="0.01" oninput="calc()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Shipping cost <span class="hint">What you pay to ship each order</span></label>
+        <div class="input-wrap">
+          <span class="input-prefix">£</span>
+          <input type="number" id="shipping" value="3.50" min="0" step="0.01" oninput="calc()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Payment processing fee <span class="hint">Shopify Payments / Stripe etc.</span></label>
+        <div class="input-wrap">
+          <input type="number" id="fee" value="1.5" min="0" max="15" step="0.1" oninput="calc()">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Ad spend per unit <span class="hint">Optional — blended CAC per order</span></label>
+        <div class="input-wrap">
+          <span class="input-prefix">£</span>
+          <input type="number" id="ads" value="0" min="0" step="0.01" oninput="calc()">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Return rate <span class="hint">Optional — % of orders returned</span></label>
+        <div class="input-wrap">
+          <input type="number" id="returns" value="0" min="0" max="100" step="0.5" oninput="calc()">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">Your results</div>
+
+      <div class="margin-bar-track">
+        <div class="margin-bar-fill" id="marginBar"></div>
+      </div>
+      <div class="health-row">
+        <span class="health-badge good" id="healthBadge">Healthy margin</span>
+        <span style="font-size:12px;color:var(--gray-400);">Net margin</span>
+      </div>
+
+      <div class="result-row">
+        <span class="result-label">Revenue per unit</span>
+        <span class="result-value" id="rRevenue">£49.99</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Total cost per unit</span>
+        <span class="result-value" id="rCost">—</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Gross profit</span>
+        <span class="result-value" id="rGross">—</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Gross margin</span>
+        <span class="result-value" id="rGrossMargin">—</span>
+      </div>
+      <div class="result-row divider">
+        <span class="result-label">Net profit per unit</span>
+        <span class="result-value positive" id="rNet">—</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Net margin</span>
+        <span class="result-value" id="rNetMargin">—</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">Break-even price</span>
+        <span class="result-value" id="rBreakeven">—</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="projection-panel">
+    <div class="panel-title">Monthly projection</div>
+    <div class="slider-row">
+      <span class="slider-label">Units sold / month</span>
+      <input type="range" id="units" min="1" max="2000" value="100" step="1" oninput="calc()">
+      <span class="slider-val" id="unitsVal">100 units</span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-label">Monthly revenue</div>
+        <div class="proj-value" id="pRevenue">£0</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-label">Monthly costs</div>
+        <div class="proj-value" id="pCosts">£0</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-label">Monthly profit</div>
+        <div class="proj-value profit" id="pProfit">£0</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-label">Annual profit</div>
+        <div class="proj-value profit" id="pAnnual">£0</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tip-panel">
+    <div class="tip-title">What's a healthy margin?</div>
+    <div class="tip-list">
+      <div class="tip-item"><div class="tip-bullet">→</div><span><strong>Under 10%</strong> — Thin. Any increase in ad costs or returns could push you into the red. Revisit your pricing or COGS.</span></div>
+      <div class="tip-item"><div class="tip-bullet">→</div><span><strong>10–20%</strong> — Workable but tight. Most ecommerce businesses aim to improve this over time through better supplier pricing and LTV.</span></div>
+      <div class="tip-item"><div class="tip-bullet">→</div><span><strong>20–40%</strong> — Healthy. You have room to invest in growth, absorb returns, and weather seasonal dips.</span></div>
+      <div class="tip-item"><div class="tip-bullet">→</div><span><strong>40%+</strong> — Strong. Typical of digital products, high-margin consumables, or DTC brands with premium positioning.</span></div>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="cta-copy">
+      <p><strong>Margins feeling tight?</strong> Trimming your SaaS costs is one of the fastest wins available. Browse EcomDeals for verified discount codes on Shopify, Klaviyo, Gorgias and 200+ tools — and keep more of your profit.</p>
+    </div>
+    <a href="https://ecomdeals.co.uk" class="cta-btn">Browse deals →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p class="footer-disclaimer"><strong>EcomDeals</strong> — Last verified May 2025. Some links are affiliate links. Codes may expire; always check the provider's site for current offers.</p>
+  <p class="footer-questions">Questions? <a href="mailto:hello@ecomdeals.co.uk">hello@ecomdeals.co.uk</a></p>
+  <div class="footer-links">
+    <a href="https://ecomdeals.co.uk/affiliate-disclosure/">Affiliate Disclosure</a>
+    <a href="https://ecomdeals.co.uk/privacy-policy/">Privacy Policy</a>
+    <a href="https://ecomdeals.co.uk/terms/">Terms &amp; Conditions</a>
+    <a href="https://ecomdeals.co.uk/cookie-policy/">Cookie Policy</a>
+  </div>
+</footer>
+
+<script>
+function fmt(n,abs){
+  if(isNaN(n)||!isFinite(n)) return '—';
+  var v = abs ? Math.abs(n) : n;
+  return (v < 0 ? '-£' : '£') + Math.abs(v).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+function fmtPct(n){
+  if(isNaN(n)||!isFinite(n)) return '—';
+  return n.toFixed(1)+'%';
+}
+function fmtK(n){
+  if(isNaN(n)||!isFinite(n)) return '£0';
+  var abs = Math.abs(n);
+  var sign = n < 0 ? '-' : '';
+  if(abs >= 1000000) return sign + '£' + (abs/1000000).toFixed(1) + 'm';
+  if(abs >= 1000)    return sign + '£' + (abs/1000).toFixed(1) + 'k';
+  return sign + '£' + Math.round(abs).toLocaleString('en-GB');
+}
+
+function calc(){
+  var price    = parseFloat(document.getElementById('price').value)    || 0;
+  var cogs     = parseFloat(document.getElementById('cogs').value)     || 0;
+  var shipping = parseFloat(document.getElementById('shipping').value) || 0;
+  var feePct   = parseFloat(document.getElementById('fee').value)      || 0;
+  var ads      = parseFloat(document.getElementById('ads').value)      || 0;
+  var retPct   = parseFloat(document.getElementById('returns').value)  || 0;
+  var units    = parseInt(document.getElementById('units').value)      || 0;
+
+  var processingFee = price * (feePct / 100);
+  var returnCost    = price * (retPct / 100);
+  var totalCost     = cogs + shipping + processingFee + ads + returnCost;
+  var grossProfit   = price - cogs - shipping - processingFee;
+  var netProfit     = price - totalCost;
+  var grossMargin   = price > 0 ? (grossProfit / price) * 100 : 0;
+  var netMargin     = price > 0 ? (netProfit   / price) * 100 : 0;
+
+  document.getElementById('rRevenue').textContent     = fmt(price);
+  document.getElementById('rCost').textContent        = fmt(totalCost);
+  document.getElementById('rGross').textContent       = fmt(Math.abs(grossProfit));
+  document.getElementById('rGrossMargin').textContent = fmtPct(grossMargin);
+  document.getElementById('rNet').textContent         = fmt(Math.abs(netProfit));
+  document.getElementById('rNetMargin').textContent   = fmtPct(netMargin);
+  document.getElementById('rBreakeven').textContent   = fmt(totalCost);
+
+  var grossEl = document.getElementById('rGross');
+  var netEl   = document.getElementById('rNet');
+  grossEl.className = 'result-value ' + (grossProfit >= 0 ? 'positive' : 'negative');
+  netEl.className   = 'result-value ' + (netProfit   >= 0 ? 'positive' : 'negative');
+
+  var barPct  = Math.max(0, Math.min(100, netMargin));
+  var bar     = document.getElementById('marginBar');
+  var badge   = document.getElementById('healthBadge');
+
+  if(netMargin >= 20){
+    bar.style.background   = '#16a34a';
+    badge.className        = 'health-badge good';
+    badge.textContent      = 'Healthy margin';
+  } else if(netMargin >= 10){
+    bar.style.background   = '#f59e0b';
+    badge.className        = 'health-badge ok';
+    badge.textContent      = 'Tight margin';
+  } else if(netProfit > 0){
+    bar.style.background   = '#ef4444';
+    badge.className        = 'health-badge bad';
+    badge.textContent      = 'Thin margin';
+  } else {
+    bar.style.background   = '#ef4444';
+    badge.className        = 'health-badge bad';
+    badge.textContent      = 'Loss-making';
+  }
+
+  bar.style.width = (netProfit <= 0 ? 100 : barPct) + '%';
+
+  var mRevenue = price     * units;
+  var mCosts   = totalCost * units;
+  var mProfit  = netProfit * units;
+  var aProfit  = mProfit   * 12;
+
+  document.getElementById('unitsVal').textContent = units.toLocaleString() + ' unit' + (units !== 1 ? 's' : '');
+  document.getElementById('pRevenue').textContent = fmtK(mRevenue);
+  document.getElementById('pCosts').textContent   = fmtK(mCosts);
+  document.getElementById('pProfit').textContent  = fmtK(mProfit);
+  document.getElementById('pAnnual').textContent  = fmtK(aProfit);
+
+  document.getElementById('pProfit').className = 'proj-value ' + (mProfit >= 0 ? 'profit' : 'loss');
+  document.getElementById('pAnnual').className = 'proj-value ' + (aProfit >= 0 ? 'profit' : 'loss');
+}
+
+calc();
+
+function toggleMenu(){
+  var b = document.getElementById('burger');
+  var m = document.getElementById('mobileNav');
+  b.classList.toggle('open');
+  m.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
