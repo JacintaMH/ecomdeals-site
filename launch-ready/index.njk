@@ -3,32 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcomDeals — Exclusive Discounts for Ecommerce Founders</title>
+<title>Launch Ready — GA4 &amp; Search Console Setup — EcomDeals</title>
+<meta name="description" content="GA4 and Google Search Console set up correctly for your ecommerce store. Done for you in 48 hours with a personal Loom walkthrough. One-off £99, no subscription.">
+<meta property="og:title" content="Launch Ready — GA4 &amp; Search Console Setup — EcomDeals">
+<meta property="og:description" content="GA4 and Google Search Console set up correctly for your ecommerce store. Done for you in 48 hours with a personal Loom walkthrough. One-off £99, no subscription.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ecomdeals.co.uk/launch-ready/">
+<link rel="canonical" href="https://ecomdeals.co.uk/launch-ready/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"></noscript>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TCQ49Q7Z');</script>
+<!-- End Google Tag Manager -->
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #080C0A;
-    --bg2: #0E1610;
-    --bg3: #141F17;
-    --card: #111811;
-    --card-border: #1E2E21;
-    --accent: #3DFF8F;
-    --accent-dim: #1A7A42;
+    --bg:           #080C0A;
+    --bg2:          #0E1610;
+    --bg3:          #141F17;
+    --card:         #111811;
+    --card-border:  #1E2E21;
+    --accent:       #3DFF8F;
+    --accent-dim:   #1A7A42;
     --accent-muted: #0E3D22;
-    --text: #F2F5F0;
-    --text-muted: #7A9080;
-    --text-dim: #4A5E50;
-    --pill-bg: #0E1F14;
-    --pill-active: #1A3A22;
-    --badge-green: #0E2B17;
-    --badge-green-text: #3DFF8F;
-    --badge-amber: #241A06;
-    --badge-amber-text: #FFB830;
-    --badge-blue: #0A1626;
-    --badge-blue-text: #4AA8FF;
+    --text:         #F2F5F0;
+    --text-muted:   #7A9080;
+    --text-dim:     #4A5E50;
   }
 
   html { scroll-behavior: smooth; }
@@ -37,17 +45,22 @@
     background: var(--bg);
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.7;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
 
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ─────────────────────────────────────────── */
   nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(8,12,10,0.85);
+    background: rgba(8,12,10,0.9);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--card-border);
     padding: 0 2rem;
     display: flex;
@@ -65,36 +78,127 @@
   }
   .nav-logo span { color: var(--accent); }
 
-  .nav-tabs {
+  .nav-links {
     display: flex;
     gap: 4px;
     background: var(--bg2);
     border: 1px solid var(--card-border);
     border-radius: 8px;
     padding: 3px;
+    align-items: center;
   }
 
-  .nav-tab {
-    font-family: 'DM Sans', sans-serif;
+  .nav-link {
     font-size: 13px;
     font-weight: 500;
     padding: 5px 16px;
     border-radius: 6px;
-    text-decoration: none;
     color: var(--text-muted);
+    text-decoration: none;
     transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
   }
 
-  .nav-tab.active {
+  .nav-link:hover { color: var(--text); }
+
+  .nav-link.active {
     background: var(--accent-muted);
     color: var(--accent);
     border: 1px solid var(--accent-dim);
   }
 
-  .nav-tab:hover:not(.active) { color: var(--text); }
+  .nav-link svg {
+    width: 10px; height: 10px;
+    opacity: 0.45;
+    transition: transform 0.15s, opacity 0.15s;
+    flex-shrink: 0;
+  }
 
+  .nav-link[aria-expanded="true"] svg { transform: rotate(180deg); opacity: 1; }
+  .nav-link[aria-expanded="true"] { color: var(--text); }
+
+  /* Dropdown */
+  .nav-dropdown-wrap { position: relative; }
+
+  .nav-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 240px;
+    background: var(--bg3);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+    z-index: 200;
+  }
+
+  .nav-link[aria-expanded="true"] + .nav-dropdown { display: block; }
+
+  .dd-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .dd-item:hover { background: rgba(61,255,143,0.05); }
+
+  .dd-icon {
+    width: 32px; height: 32px;
+    background: var(--accent-muted);
+    border: 1px solid var(--accent-dim);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .dd-label strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .dd-label span {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.45;
+    font-weight: 300;
+  }
+
+  .dd-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--accent-muted);
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    margin-left: 5px;
+    vertical-align: 1px;
+  }
+
+  /* ── HERO ─────────────────────────────────────────── */
   .hero {
-    padding: 90px 2rem 70px;
+    padding: 88px 2rem 70px;
     max-width: 860px;
     margin: 0 auto;
     text-align: center;
@@ -127,7 +231,7 @@
 
   h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(52px, 9vw, 88px);
+    font-size: clamp(52px, 9vw, 86px);
     line-height: 0.95;
     letter-spacing: 1px;
     color: var(--text);
@@ -140,80 +244,106 @@
     font-size: 17px;
     color: var(--text-muted);
     font-weight: 300;
-    max-width: 520px;
+    max-width: 500px;
     margin: 0 auto 2.5rem;
     line-height: 1.7;
   }
 
-  .hero-stats { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 26px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.15s;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .hero-cta:hover { background: #5EFFAA; transform: translateY(-1px); }
+
+  .hero-note {
+    margin-top: 0.85rem;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--card-border);
+  }
+
   .stat { text-align: center; }
 
   .stat-num {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px;
+    font-size: 34px;
     letter-spacing: 1px;
     color: var(--accent);
     display: block;
   }
 
-  .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
-
-  .controls { max-width: 1100px; margin: 0 auto; padding: 0 2rem 2rem; }
-
-  .search-wrap { position: relative; margin-bottom: 1.25rem; }
-
-  .search-icon {
-    position: absolute;
-    left: 16px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-dim);
-    font-size: 17px;
-    pointer-events: none;
-  }
-
-  #search {
-    width: 100%;
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    padding: 13px 16px 13px 44px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  #search::placeholder { color: var(--text-dim); }
-  #search:focus { border-color: var(--accent-dim); }
-
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
-
-  .filter-btn {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--card-border);
-    background: var(--pill-bg);
+  .stat-label {
+    font-size: 11px;
     color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.18s;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
-  .filter-btn:hover { border-color: var(--accent-dim); color: var(--text); }
-  .filter-btn.active { background: var(--pill-active); border-color: var(--accent-dim); color: var(--accent); }
+  /* ── SECTIONS ─────────────────────────────────────── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 2rem;
+  }
 
-  .grid-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
 
-  .grid-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
-  .grid-count { font-size: 13px; color: var(--text-dim); }
-  .grid-count span { color: var(--text-muted); }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+  }
 
-  .grid {
+  h2 em { font-style: normal; color: var(--accent); }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  hr { border: none; border-top: 1px solid var(--card-border); max-width: 1100px; margin: 0 auto; }
+
+  /* ── PROBLEM GRID ─────────────────────────────────── */
+  .problem-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1px;
     background: var(--card-border);
     border: 1px solid var(--card-border);
@@ -221,420 +351,806 @@
     overflow: hidden;
   }
 
-  .card {
+  .problem-card {
     background: var(--card);
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
     transition: background 0.18s;
-    position: relative;
   }
 
-  .card:hover { background: var(--bg3); }
+  .problem-card:hover { background: var(--bg3); }
 
-  .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+  .p-icon { font-size: 22px; margin-bottom: 1rem; }
 
-  .logo-wrap {
-    width: 44px; height: 44px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 1px;
-    flex-shrink: 0;
-    border: 1px solid;
-  }
+  .problem-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .problem-card p  { font-size: 13px; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
 
-  .logo-green  { background: #0A2414; border-color: #1A4A28; color: var(--accent); }
-  .logo-amber  { background: #211600; border-color: #4A3000; color: #FFB830; }
-  .logo-blue   { background: #060E1A; border-color: #0D2040; color: #4AA8FF; }
-  .logo-rose   { background: #1A090E; border-color: #3A1020; color: #FF6B8A; }
-  .logo-violet { background: #110B1A; border-color: #281444; color: #B87BFF; }
-  .logo-teal   { background: #041416; border-color: #0A2E34; color: #3DDEFF; }
-
-  .card-badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-
-  .badge { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
-  .badge-verified   { background: var(--badge-green); color: var(--badge-green-text); }
-  .badge-exclusive  { background: var(--badge-amber); color: var(--badge-amber-text); }
-  .badge-free-trial { background: var(--badge-blue);  color: var(--badge-blue-text); }
-
-  .card-name { font-size: 17px; font-weight: 500; color: var(--text); line-height: 1.2; }
-  .card-category { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1px; }
-  .card-desc { font-size: 13px; color: var(--text-muted); font-weight: 300; line-height: 1.55; flex: 1; }
-  .card-offer { font-size: 22px; font-family: 'Bebas Neue', sans-serif; color: var(--accent); letter-spacing: 1px; }
-
-  .code-row { display: flex; gap: 8px; align-items: center; }
-
-  .code-box {
-    flex: 1;
-    background: var(--bg2);
-    border: 1px dashed var(--card-border);
-    border-radius: 6px;
-    padding: 8px 12px;
-    font-family: 'DM Sans', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    letter-spacing: 0.05em;
-    user-select: all;
-  }
-
-  .copy-btn {
-    background: var(--accent-muted);
-    border: 1px solid var(--accent-dim);
-    color: var(--accent);
-    border-radius: 6px;
-    padding: 8px 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.18s;
-    white-space: nowrap;
-  }
-
-  .copy-btn:hover { background: var(--accent); color: var(--bg); }
-  .copy-btn.copied { background: var(--accent); color: var(--bg); }
-
-  .card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid var(--card-border); }
-  .verified-tag { font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 5px; }
-  .verified-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; }
-  .cta-link { font-size: 12px; color: var(--accent); text-decoration: none; font-weight: 500; transition: opacity 0.15s; }
-  .cta-link:hover { opacity: 0.75; }
-
-  .empty { display: none; padding: 4rem 2rem; text-align: center; color: var(--text-muted); max-width: 1100px; margin: 0 auto; }
-  .empty-icon { font-size: 40px; margin-bottom: 1rem; opacity: 0.4; }
-  .empty h3 { font-size: 18px; margin-bottom: 0.5rem; color: var(--text); }
-
-  .newsletter { max-width: 1100px; margin: 5rem auto 0; padding: 0 2rem; }
-
-  .newsletter-inner {
+  /* ── INCLUDES ─────────────────────────────────────── */
+  .alt-section {
     background: var(--bg3);
-    border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 3.5rem 3rem;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .includes-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    position: relative;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1px;
+    background: var(--card-border);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
     overflow: hidden;
   }
 
-  .newsletter-inner::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 280px; height: 280px;
-    background: radial-gradient(circle, rgba(61,255,143,0.06) 0%, transparent 70%);
-    pointer-events: none;
+  .inc-item {
+    background: var(--card);
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: background 0.18s;
   }
 
-  .newsletter-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .inc-item:hover { background: var(--bg3); }
 
-  .newsletter h2 { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 0.95; letter-spacing: 1px; color: var(--text); margin-bottom: 1rem; }
-  .newsletter h2 em { font-style: normal; color: var(--accent); }
-  .newsletter-sub { font-size: 14px; color: var(--text-muted); font-weight: 300; line-height: 1.65; }
-  .newsletter-perks { display: flex; flex-direction: column; gap: 8px; margin-top: 1.25rem; }
-  .perk { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
-  .perk-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-
-  .nl-form { display: flex; flex-direction: column; gap: 12px; }
-
-  .nl-form input[type="text"],
-  .nl-form input[type="email"] {
-    width: 100%;
-    background: var(--bg2);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    padding: 12px 16px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
-  .nl-form input::placeholder { color: var(--text-dim); }
-  .nl-form input:focus { border-color: var(--accent-dim); }
-
-  .nl-submit {
-    width: 100%;
-    background: var(--accent);
-    color: var(--bg);
-    border: none;
-    border-radius: 8px;
-    padding: 13px 20px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.18s;
-    letter-spacing: 0.02em;
-  }
-
-  .nl-submit:hover { background: #5EFFAA; }
-  .nl-submit:active { transform: scale(0.98); }
-  .nl-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-  .nl-disclaimer { font-size: 11px; color: var(--text-dim); text-align: center; line-height: 1.5; }
-  .nl-success { display: none; text-align: center; padding: 2rem 1rem; }
-
-  .nl-success-icon {
-    width: 52px; height: 52px;
+  .inc-check {
+    width: 20px; height: 20px;
     border-radius: 50%;
     background: var(--accent-muted);
     border: 1px solid var(--accent-dim);
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 1rem;
-    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 11px;
+    color: var(--accent);
   }
 
-  .nl-success h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; color: var(--accent); margin-bottom: 0.5rem; }
-  .nl-success p { font-size: 13px; color: var(--text-muted); font-weight: 300; }
+  .inc-item h3 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .inc-item p  { font-size: 13px; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
 
-  @media (max-width: 700px) {
-    .newsletter-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem; }
-    .newsletter h2 { font-size: 34px; }
+  /* ── STEPS ────────────────────────────────────────── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--card-border);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
   }
 
-  footer {
-    margin-top: 5rem;
+  .step {
+    background: var(--card);
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: background 0.18s;
+  }
+
+  .step:hover { background: var(--bg3); }
+
+  .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    color: var(--text-dim);
+    flex-shrink: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .step h3 { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .step p  { font-size: 13px; color: var(--text-muted); font-weight: 300; }
+
+  .step-pill {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    background: var(--accent-muted);
+    border: 1px solid var(--accent-dim);
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── TESTIMONIALS ─────────────────────────────────── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--card-border);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .testimonial-card {
+    background: var(--card);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: background 0.18s;
+  }
+
+  .testimonial-card:hover { background: var(--bg3); }
+  .testimonial-stars { color: var(--accent); font-size: 13px; letter-spacing: 2px; }
+
+  .testimonial-quote {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  .testimonial-quote strong { color: var(--text); font-weight: 500; }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 1rem;
     border-top: 1px solid var(--card-border);
-    padding: 2.5rem 2rem;
+  }
+
+  .testimonial-avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--accent-muted);
+    border: 1px solid var(--accent-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 500;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .testimonial-name { font-size: 13px; font-weight: 500; color: var(--text); display: block; }
+  .testimonial-meta { font-size: 12px; color: var(--text-dim); }
+
+  /* ── FAQ ──────────────────────────────────────────── */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--card-border);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .faq-item { background: var(--card); }
+
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .faq-question:hover { background: var(--bg3); }
+  .faq-question svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--text-dim); transition: transform 0.2s, color 0.15s; }
+  .faq-item.open .faq-question { color: var(--accent); }
+  .faq-item.open .faq-question svg { transform: rotate(45deg); color: var(--accent); }
+
+  .faq-answer {
+    display: none;
+    padding: 1rem 1.5rem 1.25rem;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.75;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .faq-item.open .faq-answer { display: block; }
+  .faq-answer a { color: var(--accent); }
+
+  /* ── PRICING ──────────────────────────────────────── */
+  .urgency-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--accent-muted);
+    border: 1px solid var(--accent-dim);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+    max-width: 460px;
+    margin: 0 auto 3rem;
+  }
+
+  .urgency-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .urgency-banner strong { color: var(--text); }
+
+  .pricing-card {
+    max-width: 460px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .pricing-head {
+    background: var(--bg3);
+    padding: 2rem 2rem 1.75rem;
+    border-bottom: 1px solid var(--card-border);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pricing-head::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: 50%;
+    transform: translateX(-50%);
+    width: 260px; height: 180px;
+    background: radial-gradient(ellipse at top, rgba(61,255,143,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .pricing-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .price-display { font-family: 'Bebas Neue', sans-serif; line-height: 1; margin-bottom: 0.4rem; }
+  .price-display .sym { font-size: 28px; vertical-align: top; line-height: 1.6; color: var(--text-muted); }
+  .price-display .num { font-size: 80px; letter-spacing: 2px; }
+  .price-sub { font-size: 12px; color: var(--text-dim); }
+
+  .pricing-body { padding: 1.75rem 2rem; }
+
+  .feat-list { list-style: none; margin-bottom: 1.5rem; }
+
+  .feat-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 300;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .feat-list li:last-child { border-bottom: none; }
+
+  .feat-list li .check {
+    width: 16px; height: 16px;
+    background: var(--accent-muted);
+    border: 1px solid var(--accent-dim);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 9px;
+    color: var(--accent);
+  }
+
+  .btn-buy {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 13px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.18s;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .btn-buy:hover { background: #5EFFAA; }
+
+  .pricing-note { text-align: center; margin-top: 0.85rem; font-size: 12px; color: var(--text-dim); }
+  .pricing-note a { color: var(--accent); }
+
+  /* ── FINAL CTA ────────────────────────────────────── */
+  .final-cta {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 2rem 90px;
+    text-align: center;
+    position: relative;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 200px;
+    background: radial-gradient(ellipse at top, rgba(61,255,143,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-cta h2 { margin-bottom: 0.75rem; }
+  .final-cta p { font-size: 15px; color: var(--text-muted); font-weight: 300; margin-bottom: 2rem; }
+
+  /* ── FOOTER ───────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--card-border);
+    padding: 2rem;
     text-align: center;
     color: var(--text-dim);
     font-size: 13px;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   footer strong { color: var(--text-muted); }
+  footer a { color: var(--accent); text-decoration: none; }
 
-  .coming-soon-tag {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 6px 12px; border-radius: 6px;
-    background: var(--badge-amber); color: var(--badge-amber-text);
-    white-space: nowrap; flex-shrink: 0;
+  .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.75rem; }
+  .footer-links a { color: var(--text-dim); transition: color 0.15s; font-size: 12px; }
+  .footer-links a:hover { color: var(--text-muted); }
+
+  /* ── MOBILE ───────────────────────────────────────── */
+  @media (max-width: 700px) {
+    nav { padding: 0 1rem; }
+    .nav-logo { font-size: 19px; }
+    .nav-link { padding: 5px 10px; font-size: 12px; }
+    .hero { padding: 52px 1.25rem 44px; }
+    h1 { font-size: 50px; }
+    .hero-sub { font-size: 15px; }
+    .hero-stats { gap: 1.5rem; }
+    .stat-num { font-size: 28px; }
+    .section { padding: 48px 1.25rem; }
+    h2 { font-size: 38px; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .includes-grid { grid-template-columns: 1fr; }
+    .step-pill { display: none; }
+    .pricing-card { margin: 0; }
+    .price-display .num { font-size: 64px; }
+    .pricing-head { padding: 1.5rem 1.5rem 1.25rem; }
+    .pricing-body { padding: 1.25rem 1.5rem; }
+    footer { padding: 2rem 1.25rem; }
+    .footer-links { gap: 1rem; }
+    .final-cta { padding: 48px 1.25rem 72px; }
   }
 
-  .toast {
-    position: fixed;
-    bottom: 2rem; left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--accent); color: var(--bg);
-    padding: 10px 22px; border-radius: 8px;
-    font-size: 13px; font-weight: 500;
-    opacity: 0; transition: all 0.25s;
-    pointer-events: none; z-index: 999; white-space: nowrap;
-  }
-
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .hidden { display: none !important; }
-
-  @media (max-width: 600px) {
-    nav { padding: 0 1.25rem; }
-    .hero { padding: 60px 1.25rem 50px; }
-    .controls, .grid-wrap { padding: 0 1.25rem; }
-    .grid { grid-template-columns: 1fr; border-radius: 10px; }
-    h1 { font-size: 54px; }
+  @media (max-width: 420px) {
+    .nav-links { gap: 2px; padding: 2px; }
+    .nav-link { padding: 4px 7px; font-size: 11px; }
+    h1 { font-size: 42px; }
+    .hero-cta { width: 100%; justify-content: center; }
+    .hero-stats { gap: 1.25rem; }
   }
 </style>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TCQ49Q7Z"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <nav>
   <a href="/" class="nav-logo">Ecom<span>Deals</span></a>
-  <div class="nav-tabs">
-    <a href="/" class="nav-tab active" aria-current="page">Deals</a>
-    <a href="/blog/" class="nav-tab">Blog</a>
-    <a href="/tools/profit-margin-calculator/" class="nav-tab">Tools</a>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Deals</a>
+    <a href="/blog/" class="nav-link">Blog</a>
+
+    <div class="nav-dropdown-wrap">
+      <button class="nav-link" id="tools-btn" aria-haspopup="true" aria-expanded="false">
+        Tools
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1.5 3.5l3.5 3.5 3.5-3.5"/></svg>
+      </button>
+      <div class="nav-dropdown" id="tools-dropdown">
+        <a href="/tools/profit-margin-calculator/" class="dd-item">
+          <div class="dd-icon">%</div>
+          <div class="dd-label">
+            <strong>Profit Margin Calculator</strong>
+            <span>Work out your margins, break-even and monthly projections</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-dropdown-wrap">
+      <button class="nav-link active" id="services-btn" aria-haspopup="true" aria-expanded="false">
+        Services
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1.5 3.5l3.5 3.5 3.5-3.5"/></svg>
+      </button>
+      <div class="nav-dropdown" id="services-dropdown">
+        <a href="/launch-ready/" class="dd-item">
+          <div class="dd-icon">✦</div>
+          <div class="dd-label">
+            <strong>Launch Ready <span class="dd-badge">£99</span></strong>
+            <span>GA4 &amp; Search Console set up in 48 hours</span>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Curated for Ecommerce Founders</div>
-  <h1>Save More.<br><em>Sell More.</em></h1>
-  <p class="hero-sub">Exclusive discount codes for the best SaaS tools that power 7-figure ecommerce stores. All codes verified monthly.</p>
+  <div class="hero-eyebrow">Done-for-you · One-off · £99</div>
+  <h1>Launch With Your<br>Analytics <em>Actually Working.</em></h1>
+  <p class="hero-sub">Most stores go live with broken or missing tracking. We set up GA4 and Search Console correctly — so every visitor, sale and search impression is captured from the very first day.</p>
+  <a href="https://buy.stripe.com/5kQ5kE5r57UhfMackeco000" class="hero-cta">
+    Set Up My Store — £99
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+  <p class="hero-note">One-off payment · No subscription · 14-day fix guarantee</p>
+  <p class="hero-note" style="margin-top:0.4rem; font-size:11px; color:var(--text-dim);">Your store details are collected at checkout — takes 2 minutes</p>
+
   <div class="hero-stats">
     <div class="stat">
-      <span class="stat-num" id="total-count">16</span>
-      <span class="stat-label">Tools Listed</span>
+      <span class="stat-num">48hrs</span>
+      <span class="stat-label">Turnaround</span>
     </div>
     <div class="stat">
-      <span class="stat-num">£0</span>
-      <span class="stat-label">Cost to Access</span>
+      <span class="stat-num">£99</span>
+      <span class="stat-label">One-off price</span>
     </div>
     <div class="stat">
-      <span class="stat-num">Up to 30%</span>
-      <span class="stat-label">Max Discount</span>
+      <span class="stat-num">14 days</span>
+      <span class="stat-label">Fix guarantee</span>
     </div>
   </div>
 </section>
 
-<div class="controls">
-  <div class="search-wrap">
-    <span class="search-icon">&#9906;</span>
-    <input type="text" id="search" placeholder="Search tools e.g. Klaviyo, analytics, SMS…" autocomplete="off">
-  </div>
-  <div class="filters" id="filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="Email & SMS">Email &amp; SMS</button>
-    <button class="filter-btn" data-filter="Analytics">Analytics</button>
-    <button class="filter-btn" data-filter="Reviews">Reviews</button>
-    <button class="filter-btn" data-filter="Customer Support">Customer Support</button>
-    <button class="filter-btn" data-filter="Page Building">Page Building</button>
-    <button class="filter-btn" data-filter="Subscriptions">Subscriptions</button>
-    <button class="filter-btn" data-filter="Loyalty">Loyalty</button>
-    <button class="filter-btn" data-filter="Platform">Platform</button>
-  </div>
-</div>
+<hr>
 
-<div class="grid-wrap">
-  <div class="grid-header">
-    <div class="grid-count"><span id="visible-count">16</span> deals found</div>
-  </div>
-  <div class="grid" id="grid"></div>
-  <div class="empty" id="empty">
-    <div class="empty-icon">🔍</div>
-    <h3>No deals found</h3>
-    <p>Try a different search or category.</p>
-  </div>
-</div>
-
-<section class="newsletter">
-  <div class="newsletter-inner">
-    <div class="newsletter-copy">
-      <div class="newsletter-eyebrow">✦ Free Monthly Newsletter</div>
-      <h2>New Deals.<br><em>Every Month.</em></h2>
-      <p class="newsletter-sub">Join 2,400+ ecommerce founders getting a curated monthly drop of fresh discount codes, new tool reviews, and insider tips.</p>
-      <div class="newsletter-perks">
-        <div class="perk"><span class="perk-dot"></span> Fresh verified codes every month</div>
-        <div class="perk"><span class="perk-dot"></span> Tool comparisons and honest reviews</div>
-        <div class="perk"><span class="perk-dot"></span> Monthly "best stack" roundups by store size</div>
-        <div class="perk"><span class="perk-dot"></span> Zero spam, unsubscribe anytime</div>
-      </div>
+<!-- PROBLEM -->
+<section class="section">
+  <div class="section-eyebrow">Sound familiar?</div>
+  <h2>Most Stores Launch <em>Blind.</em></h2>
+  <p class="section-sub">Setting up GA4 and Search Console sounds simple. It isn't. Here's what goes wrong — and what it quietly costs you.</p>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="p-icon">🕳️</div>
+      <h3>Data gone forever</h3>
+      <p>GA4 only tracks from the moment it's installed. Every day you launch without it is a gap in your data you can never fill.</p>
     </div>
-    <div class="newsletter-right">
-      <div class="nl-form" id="nl-form">
-        <input type="text" id="nl-name" placeholder="First name" autocomplete="given-name">
-        <input type="email" id="nl-email" placeholder="Your email address" autocomplete="email">
-        <button class="nl-submit" id="nl-submit" onclick="handleSignup()">Get Free Deals Every Month →</button>
-        <p class="nl-disclaimer">No spam. No paid promotions disguised as content. Just deals.</p>
-      </div>
-      <div class="nl-success" id="nl-success">
-        <div class="nl-success-icon">✓</div>
-        <h3>You're In!</h3>
-        <p>Check your inbox — your first deal drop is on its way.</p>
-      </div>
+    <div class="problem-card">
+      <div class="p-icon">⚙️</div>
+      <h3>Broken out of the box</h3>
+      <p>Default GA4 misses purchase events, checkout steps, and add-to-cart. You think it's working. It isn't.</p>
+    </div>
+    <div class="problem-card">
+      <div class="p-icon">🔍</div>
+      <h3>Invisible to Google</h3>
+      <p>Without Search Console verified and your sitemap submitted, Google hasn't indexed your store. You don't exist in search.</p>
+    </div>
+    <div class="problem-card">
+      <div class="p-icon">⏱️</div>
+      <h3>4+ hours you don't have</h3>
+      <p>Between tag managers, data streams, property IDs and verification codes, most founders spend half a day and still get it wrong.</p>
     </div>
   </div>
+</section>
+
+<!-- INCLUDES -->
+<section class="alt-section">
+  <div class="section">
+    <div class="section-eyebrow">What's included</div>
+    <h2>Everything Done <em>For You.</em></h2>
+    <p class="section-sub">Not a tutorial. Not a checklist. We do it — you get back a working, verified setup and a walkthrough so you know exactly how to use it.</p>
+    <div class="includes-grid">
+      <div class="inc-item">
+        <div class="inc-check">✓</div>
+        <div>
+          <h3>GA4 property setup</h3>
+          <p>Property created, data stream configured, and connected to your store so tracking starts the moment you go live.</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">✓</div>
+        <div>
+          <h3>Ecommerce event tracking</h3>
+          <p>Purchase, add-to-cart and checkout events configured and tested — so you can see exactly what's driving sales.</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">✓</div>
+        <div>
+          <h3>Search Console verified</h3>
+          <p>Domain ownership verified and Google pointed at your store, so you start building search presence from day one.</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">✓</div>
+        <div>
+          <h3>GA4 + Search Console linked</h3>
+          <p>Both accounts connected so organic keyword data and search impressions flow directly into your GA4 dashboard.</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">✓</div>
+        <div>
+          <h3>Sitemap submitted to Google</h3>
+          <p>Your products, collections and pages submitted so Google crawls and indexes them from the moment you launch.</p>
+        </div>
+      </div>
+      <div class="inc-item">
+        <div class="inc-check">✓</div>
+        <div>
+          <h3>Personal Loom walkthrough</h3>
+          <p>A screen-recorded video walking you through your setup — so you actually understand what you're looking at.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section">
+  <div class="section-eyebrow">How it works</div>
+  <h2>Three Steps, <em>48 Hours.</em></h2>
+  <p class="section-sub">No lengthy onboarding. You fill in one short form. We handle everything else.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Pay &amp; tell us about your store</h3>
+        <p>Complete checkout in 2 minutes — just your store URL and platform. We'll email you straight after with simple access instructions.</p>
+      </div>
+      <span class="step-pill">2 mins</span>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h3>We handle everything</h3>
+        <p>GA4 configured, Search Console verified, events tested, everything linked. You don't need to lift a finger.</p>
+      </div>
+      <span class="step-pill">24–48 hrs</span>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h3>You're live and tracking</h3>
+        <p>We send your personal Loom walkthrough, revoke our access, and you're done — tracking from day one.</p>
+      </div>
+      <span class="step-pill">Done ✦</span>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- TESTIMONIALS -->
+<section class="alt-section">
+  <div class="section">
+    <div class="section-eyebrow">What founders are saying</div>
+    <h2>Trusted By <em>Ecom Founders.</em></h2>
+    <p class="section-sub">From pre-launch stores to growing brands — here's what people say after getting set up.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"I'd been putting off setting up GA4 for weeks because every guide made it seem impossible. <strong>Done in 48 hours, zero stress.</strong> The Loom walkthrough was the best part — I finally understand what I'm looking at."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <span class="testimonial-name">Sarah M.</span>
+            <span class="testimonial-meta">Shopify store owner</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"I thought I'd already set up GA4 correctly. Turns out I wasn't tracking any purchases at all. <strong>Three months of data — gone.</strong> Don't make the same mistake, just get this done properly before you launch."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">J</div>
+          <div>
+            <span class="testimonial-name">James R.</span>
+            <span class="testimonial-meta">WooCommerce store, pre-launch</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">"For £99 this is an absolute no-brainer. I would have spent a full day on YouTube trying to figure this out myself. <strong>Worth every penny just for the time saved</strong>, let alone getting it done right."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">L</div>
+          <div>
+            <span class="testimonial-name">Laura T.</span>
+            <span class="testimonial-meta">DTC brand founder</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Replace the three testimonial cards above with real customer quotes before going live -->
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="section-eyebrow">Got questions?</div>
+  <h2>Everything You <em>Need To Know.</em></h2>
+  <p class="section-sub">Answers to the most common questions before you get started.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question">
+        What access do you need from me?
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        We'll need viewer or editor access to your Google account to create a GA4 property and verify Search Console. We request only the minimum access needed, and once your setup is complete and you've received your walkthrough, we revoke access entirely. Your account stays yours.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Which platforms do you support?
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        We support Shopify, WooCommerce, Wix, Squarespace and most major ecommerce platforms. If you're not sure whether yours is covered, just <a href="mailto:hello@ecomdeals.co.uk">drop us an email</a> before purchasing and we'll confirm.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Is my data safe?
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Yes. We never store, share or access your customer data. We only configure the tracking tools — we don't see your orders, revenue, or customer information. Access is revoked the moment the job is done.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Can you set this up on an existing store?
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Absolutely. Whether you're launching next week or have been live for months without proper tracking, we can get you set up. If you already have a GA4 property or Search Console account, we can audit and fix your existing setup rather than starting from scratch — just mention it when you get in touch.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        What if something isn't working after setup?
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        We test everything before sending your walkthrough, but if you spot an issue within 14 days of delivery, we'll fix it at no extra charge. Just reply to your delivery email and we'll sort it.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Do I need to be technical?
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-answer">
+        Not at all. That's the whole point. You fill in a plain-English form at checkout, and we handle the technical side completely. The Loom walkthrough at the end is made for non-technical founders — we show you exactly what to look at and what it means, no jargon.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-eyebrow" style="text-align:center">No surprises</div>
+  <h2 style="text-align:center; margin-bottom:0.5rem">One Price. <em>Everything Included.</em></h2>
+  <p class="section-sub" style="text-align:center; margin:0 auto 2rem">No ongoing fees. No upsells. Everything done and dusted for £99.</p>
+  <div class="urgency-banner">
+    <span class="urgency-dot"></span>
+    <span><strong>Limited availability</strong> — we take on a small number of setups each week to ensure quality.</span>
+  </div>
+  <div class="pricing-card">
+    <div class="pricing-head">
+      <div class="pricing-label">Launch Ready</div>
+      <div class="price-display">
+        <span class="sym">£</span><span class="num">99</span>
+      </div>
+      <p class="price-sub">One-off payment · No subscription · 14-day fix guarantee</p>
+    </div>
+    <div class="pricing-body">
+      <ul class="feat-list">
+        <li><span class="check">✓</span> GA4 property + data stream setup</li>
+        <li><span class="check">✓</span> Ecommerce event tracking configured &amp; tested</li>
+        <li><span class="check">✓</span> Google Search Console verified</li>
+        <li><span class="check">✓</span> Sitemap submitted to Google</li>
+        <li><span class="check">✓</span> GA4 + Search Console linked</li>
+        <li><span class="check">✓</span> Personal Loom walkthrough video</li>
+        <li><span class="check">✓</span> Delivered within 48 hours</li>
+        <li><span class="check">✓</span> Access fully revoked on completion</li>
+      </ul>
+      <a href="https://buy.stripe.com/5kQ5kE5r57UhfMackeco000" class="btn-buy">Set Up My Store — £99 →</a>
+      <p class="pricing-note">Questions first? <a href="mailto:hello@ecomdeals.co.uk">hello@ecomdeals.co.uk</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Every Day You Wait,<br><em>You're Losing Data.</em></h2>
+  <p>The moment your store goes live, the clock starts. Don't let your first visitors, sales and search impressions go untracked.</p>
+  <a href="https://buy.stripe.com/5kQ5kE5r57UhfMackeco000" class="hero-cta">
+    Set Up My Store — £99
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
 </section>
 
 <footer>
-  <p><strong>EcomDeals</strong> — Last verified May 2025. Some links are affiliate links. Codes may expire; always check the provider's site for current offers.</p>
-  <p style="margin-top: 0.75rem;">Questions or suggestions? <a href="mailto:hello@ecomdeals.co.uk" style="color: var(--accent); text-decoration: none;">hello@ecomdeals.co.uk</a></p>
+  <p><strong>EcomDeals</strong> — <a href="mailto:hello@ecomdeals.co.uk">hello@ecomdeals.co.uk</a></p>
+  <div class="footer-links">
+    <a href="/affiliate-disclosure/">Affiliate Disclosure</a>
+    <a href="/privacy-policy/">Privacy Policy</a>
+    <a href="/terms/">Terms &amp; Conditions</a>
+    <a href="/cookie-policy/">Cookie Policy</a>
+  </div>
 </footer>
 
-<div class="toast" id="toast">Code copied to clipboard!</div>
-
-<script>
-const deals = [
-  { name: "Shopify", abbr: "SH", logoClass: "logo-green", category: "Platform", desc: "The world's leading ecommerce platform, trusted by 5M+ stores. Everything to launch, run and scale — storefront, checkout, analytics and 8,000+ apps.", offer: "3 Months Free", code: "Coming Soon", badge: "free-trial", badgeLabel: "Free Trial", verified: true, url: "https://shopify.com" },
-  { name: "Klaviyo", abbr: "KL", logoClass: "logo-amber", category: "Email & SMS", desc: "The email and SMS marketing platform built for ecommerce. Powerful segmentation, flows, and deep Shopify integration.", offer: "20% Off First 3 Months", code: "Coming Soon", badge: "verified", badgeLabel: "Verified", verified: true, url: "https://klaviyo.com" },
-  { name: "Gorgias", abbr: "GR", logoClass: "logo-blue", category: "Customer Support", desc: "Helpdesk built for ecommerce brands. Manage all support channels in one place with deep Shopify order data baked in.", offer: "10% Off Any Plan", code: "Coming Soon", badge: "verified", badgeLabel: "Verified", verified: true, url: "https://gorgias.com" },
-  { name: "Postscript", abbr: "PS", logoClass: "logo-rose", category: "Email & SMS", desc: "SMS marketing platform designed exclusively for Shopify stores. Build subscriber lists and send revenue-driving campaigns.", offer: "15% Off Annual Plans", code: "Coming Soon", badge: "exclusive", badgeLabel: "Exclusive", verified: true, url: "https://postscript.io" },
-  { name: "ReCharge", abbr: "RC", logoClass: "logo-teal", category: "Subscriptions", desc: "The leading subscription management platform for Shopify. Handle recurring billing, subscriber portals, and retention flows.", offer: "20% Off For 6 Months", code: "Coming Soon", badge: "exclusive", badgeLabel: "Exclusive", verified: true, url: "https://rechargepayments.com" },
-  { name: "Yotpo", abbr: "YT", logoClass: "logo-amber", category: "Reviews", desc: "Product reviews, loyalty programs, referrals, and SMS marketing all in a single platform for ecommerce growth.", offer: "25% Off First Year", code: "Coming Soon", badge: "exclusive", badgeLabel: "Exclusive", verified: true, url: "https://yotpo.com" },
-  { name: "Omnisend", abbr: "OM", logoClass: "logo-violet", category: "Email & SMS", desc: "Omnichannel marketing automation for ecommerce. Email, SMS, and push notifications with pre-built automation workflows.", offer: "30% Off Pro Plan", code: "Coming Soon", badge: "verified", badgeLabel: "Verified", verified: true, url: "https://omnisend.com" },
-  { name: "Loox", abbr: "LX", logoClass: "logo-rose", category: "Reviews", desc: "Photo and video review app for Shopify. Collect and display stunning visual social proof that converts browsers to buyers.", offer: "20% Off First Month", code: "Coming Soon", badge: "verified", badgeLabel: "Verified", verified: true, url: "https://loox.app" },
-  { name: "Triple Whale", abbr: "TW", logoClass: "logo-blue", category: "Analytics", desc: "The ecommerce analytics platform that consolidates your store data, ad spend, and profit metrics into one clear dashboard.", offer: "15% Off Any Plan", code: "Coming Soon", badge: "exclusive", badgeLabel: "Exclusive", verified: true, url: "https://triplewhale.com" },
-  { name: "Tidio", abbr: "TI", logoClass: "logo-teal", category: "Customer Support", desc: "Live chat, chatbots, and AI support for ecommerce stores. Convert more visitors and resolve customer queries instantly.", offer: "20% Off Communicator Plan", code: "Coming Soon", badge: "verified", badgeLabel: "Verified", verified: true, url: "https://tidio.com" },
-  { name: "LoyaltyLion", abbr: "LL", logoClass: "logo-amber", category: "Loyalty", desc: "Data-driven loyalty and engagement platform. Build custom rewards programs that increase retention and customer LTV.", offer: "20% Off for 3 Months", code: "Coming Soon", badge: "verified", badgeLabel: "Verified", verified: true, url: "https://loyaltylion.com" },
-  { name: "PageFly", abbr: "PF", logoClass: "logo-green", category: "Page Building", desc: "Drag-and-drop landing page and product page builder for Shopify. Build high-converting pages without code.", offer: "10% Off Paid Plans", code: "Coming Soon", badge: "verified", badgeLabel: "Verified", verified: true, url: "https://pagefly.io" },
-  { name: "Privy", abbr: "PV", logoClass: "logo-violet", category: "Email & SMS", desc: "Popups, email, and SMS marketing built for Shopify. Grow your list, reduce abandonment, and send targeted campaigns.", offer: "15% Off Conversion Plan", code: "Coming Soon", badge: "verified", badgeLabel: "Verified", verified: true, url: "https://privy.com" },
-  { name: "Okendo", abbr: "OK", logoClass: "logo-rose", category: "Reviews", desc: "Customer reviews and UGC platform. Capture rich reviews with attributes and photos, and display them to drive conversions.", offer: "25% Off Essential Plan", code: "Coming Soon", badge: "exclusive", badgeLabel: "Exclusive", verified: true, url: "https://okendo.io" },
-  { name: "Northbeam", abbr: "NB", logoClass: "logo-blue", category: "Analytics", desc: "Multi-touch attribution platform for ecommerce. Know exactly which channels and ads are driving real revenue.", offer: "20% Off Starter Plan", code: "Coming Soon", badge: "exclusive", badgeLabel: "Exclusive", verified: true, url: "https://northbeam.io" },
-  { name: "Zipify Pages", abbr: "ZP", logoClass: "logo-teal", category: "Page Building", desc: "Funnel and landing page builder for Shopify from the creators of eCom Hacks. Optimised for AOV and conversion rate.", offer: "15% Off Plus Plan", code: "Coming Soon", badge: "exclusive", badgeLabel: "Exclusive", verified: true, url: "https://zipify.com" }
-];
-
-const badgeMap = { 'verified': 'badge-verified', 'exclusive': 'badge-exclusive', 'free-trial': 'badge-free-trial' };
-
-function renderCards(list) {
-  const grid = document.getElementById('grid');
-  const empty = document.getElementById('empty');
-  document.getElementById('visible-count').textContent = list.length;
-  if (list.length === 0) { grid.innerHTML = ''; grid.style.display = 'none'; empty.style.display = 'block'; return; }
-  grid.style.display = 'grid'; empty.style.display = 'none';
-  grid.innerHTML = list.map(d => `
-    <div class="card" data-category="${d.category}">
-      <div class="card-head">
-        <div class="logo-wrap ${d.logoClass}">${d.abbr}</div>
-        <div class="card-badges"><span class="badge ${badgeMap[d.badge]}">${d.badgeLabel}</span></div>
-      </div>
-      <div>
-        <div class="card-name">${d.name}</div>
-        <div class="card-category">${d.category}</div>
-      </div>
-      <p class="card-desc">${d.desc}</p>
-      <div class="card-offer">${d.offer}</div>
-      <div class="code-row">
-        <div class="code-box" style="opacity:0.5;font-style:italic;">${d.code}</div>
-        <span class="coming-soon-tag">Coming Soon</span>
-      </div>
-      <div class="card-footer">
-        <span class="verified-tag"><span class="verified-dot"></span> Verified May 2025</span>
-        <a href="${d.url}" target="_blank" rel="noopener" class="cta-link">Get Deal →</a>
-      </div>
-    </div>
-  `).join('');
-}
-
-function filter() {
-  const query = document.getElementById('search').value.toLowerCase().trim();
-  const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
-  const filtered = deals.filter(d => {
-    const matchCat = activeFilter === 'all' || d.category === activeFilter;
-    const matchQ = !query || d.name.toLowerCase().includes(query) || d.category.toLowerCase().includes(query) || d.desc.toLowerCase().includes(query);
-    return matchCat && matchQ;
-  });
-  renderCards(filtered);
-}
-
-document.getElementById('search').addEventListener('input', filter);
-document.getElementById('filters').addEventListener('click', e => {
-  if (!e.target.classList.contains('filter-btn')) return;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  e.target.classList.add('active');
-  filter();
-});
-
-function handleSignup() {
-  const name = document.getElementById('nl-name').value.trim();
-  const email = document.getElementById('nl-email').value.trim();
-  const btn = document.getElementById('nl-submit');
-  if (!name) { document.getElementById('nl-name').focus(); return; }
-  if (!email || !email.includes('@')) { document.getElementById('nl-email').focus(); return; }
-  btn.disabled = true; btn.textContent = 'Subscribing…';
-  setTimeout(() => {
-    document.getElementById('nl-form').style.display = 'none';
-    document.getElementById('nl-success').style.display = 'block';
-  }, 900);
-}
-
-renderCards(deals);
-document.getElementById('total-count').textContent = deals.length;
-document.getElementById('visible-count').textContent = deals.length;
-</script>
 <script>
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
-      if (!user) { window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; }); }
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
     });
   }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Nav dropdowns
+  const dropdownBtns = document.querySelectorAll('.nav-link[aria-haspopup="true"]');
+
+  dropdownBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = this.getAttribute('aria-expanded') === 'true';
+      dropdownBtns.forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+      this.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  document.addEventListener('click', function() {
+    dropdownBtns.forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') dropdownBtns.forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+  });
 </script>
+
 </body>
 </html>
