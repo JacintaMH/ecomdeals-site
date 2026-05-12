@@ -16,7 +16,7 @@ permalink: /sitemap.xml
   {% for post in collections.posts %}
   <url>
     <loc>https://ecomdeals.co.uk{{ post.url }}</loc>
-    <lastmod>{{ post.date | dateDisplay }}</lastmod>
+    <lastmod>{{ post.date | isoDate }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
